@@ -10,19 +10,22 @@ void Swap(int *a, int *b) {
   *b = *a;
   *a = temp;
 }
-
+// loop through the array, selecting the smallest element and switching it with
+// the current element
 void SelectionSort(int *a, int size) {
-  int smallest;
+  int minimum;
   //{5,1,3,4,2}
+  //outer loop iterates through array
   for (int n = 0; n < size - 1; n++) {
     // locate the smallest unprocessed element
-    smallest = n;
+    minimum = n;
+    //inner loop is finding the smallest element to the right of current element
     for (int i = n + 1; i < size - 1; i++) {
-      if (a[i] < a[smallest]) {
-        smallest = i;
+      if (a[i] < a[minimum]) {
+        minimum = i;
       }
     }
-    Swap(&a[n], &a[smallest]);
+    Swap(&a[n], &a[minimum]);
   }
 }
 
@@ -123,7 +126,7 @@ int main() {
   SelectionSort(bigRandArray, bigRandSize);
   auto t2 = high_resolution_clock::now();
   duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "Sequential Sort Time: " << ms_double.count() << "ms";
+  std::cout << "Sequential Sort Time: " << ms_double.count() << "ms" << endl;
 
   cout << "Exercise 4 - BubbleSort" << endl;
   cout << "Before Sort" << endl;
@@ -134,7 +137,7 @@ int main() {
   BubbleSort(bigRandArray, bigRandSize);
   auto t4 = high_resolution_clock::now();
   duration<double, std::milli> ms_double_bubble = t4 - t3;
-  std::cout << "BubbleSort Time: " << ms_double_bubble.count() << "ms";
+  std::cout << "BubbleSort Time: " << ms_double_bubble.count() << "ms" << endl;;
   //   Print(data2, 10);
 
   cout << "Exercise 5" << endl;
@@ -144,7 +147,7 @@ int main() {
   auto t6 = high_resolution_clock::now();
   duration<double, std::milli> ms_modified_double_bubble = t6 - t5;
   std::cout << "Modified BubbleSort Time: " << ms_modified_double_bubble.count()
-            << "ms";
+            << "ms" << endl;
 
   cout << "Exercise 6" << endl;
   cout << "Sequential Search" << endl;
@@ -169,8 +172,8 @@ int main() {
   int foundBinary = BinarySearch(data4, 10, 3);
   auto t10 = high_resolution_clock::now();
   duration<double, std::milli> ms_binary_search = t10 - t9;
-  std::cout << "Binary Search Time: " << ms_binary_search.count()
-            << "ms" <<endl;
+  std::cout << "Binary Search Time: " << ms_binary_search.count() << "ms"
+            << endl;
   if (foundBinary != -1) {
     cout << "Key exists in the array " << endl;
   } else {
