@@ -1,3 +1,6 @@
+using namespace std;
+#include <iostream>
+
 class PriorityQueue {
 private:
   int count;
@@ -13,13 +16,7 @@ public:
 
   int PeakMin() { return data[count - 1]; }
 
-  bool IsEmpty() {
-    if (count == 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  bool IsEmpty() { return (count == 0); }
 
   bool IsFull() {
     if (count == size) {
@@ -31,26 +28,21 @@ public:
 
   int Size() { return this->size; }
 
-  void Remove(int item) {
-    data[count];
-    count--;
-  }
+  int Remove() { return data[--count]; }
 
   void Insert(int item) {
-    if (IsEmpty() == true) {
-      data[0];
-      count++;
+    if (count == 0) {
+      data[0] = item;
     } else {
-      int j;
-      for (int j = (count - 1); j >= 0; j--) {
+      for (int j = count; j >= 0; j--) {
         if (item > data[j]) {
           data[j + 1] = data[j];
         } else {
           break;
         }
-        data[j + 1] = item;
-        count++;
+        data[j] = item;
       }
     }
+    count++;
   }
 };
