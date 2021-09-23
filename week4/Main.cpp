@@ -30,7 +30,8 @@ int main() {
   } else {
     cout << "Could not find link data" << endl;
   }
-
+  
+  cout << "Deleting the first link" << endl;
   Link *deletefirstlink = ll -> DeleteFirst();
   ll->Display();
 
